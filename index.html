@@ -1,29 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign-up Form</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="splash-panel">
         <header>
             <img src="" alt="" srcset="">
         </header>
+        <p>Photo made by ___</p>
     </div>
 
     <main id="main-content">
-        <section id="signup-blurb">
+        <section class="signup-blurb">
             <p>Just to clarify, this site isn't real. But let's get you signed up!</p>
             <p>cmooonnnn.... do it.</p>
         </section>
-        <section id="signup-form">
+        <section class="signup-form">
             <h1>Let's do this!</h1>
+            <span class="required-info">Fields marked with <span class="required">*</span> are
+                required.</span>
             <form action="" method="post">
-                
+                <fieldset class="form-input">
+                    <div class="form-group personal-info">
+                        <label for="first-name">First Name</label>
+                        <input id="first-name" name="first-name" type="text" required>
+
+                        <label for="last-name">Last Name</label>
+                        <input id="last-name" name="last-name" type="text" required>
+
+                        <label for="phone">Phone Number</label>
+                        <input id="phone" name="phone" type="tel" required>
+                    </div>
+
+                    <div class="form-group account-info">
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="email" required>
+
+                        <label for="password">Password</label>
+                        <input id="password" name="password" type="password" required>
+
+                        <label for="confirm-password">Confirm Password</label>
+                        <input id="confirm-password" name="confirm-password" type="password" required>
+                    </div>
+                </fieldset>
+                <button type="submit">Sign Up</button>
             </form>
         </section>
     </main>
 </body>
+
 </html>
