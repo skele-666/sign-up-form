@@ -1,6 +1,14 @@
 /* CSS reset */
 @import 'node_modules/modern-normalize/modern-normalize.css';
 
+/* Custom font for logo */
+@font-face {
+    font-family: 'Norse Bold';
+    src: url('./assets/fonts/Norse-Bold.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 :root {
     line-height: 1.5;
 }
@@ -74,18 +82,50 @@ body {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+    font-size: 1.2rem;
 }
 
+/* Splash panel */
 .splash-panel {
-    flex: 1.5;
-    background-color: #9fb6cc;
-    padding: 2rem;
+    flex: 1.3;
+    background-image: url('./assets/images/jellyfish-unsplash.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     text-align: center;
     padding-top: 10rem;
+    color: white;
+    font-size: 1rem;
+}
+
+.splash-panel p {
+    padding: 0 1rem 1rem 1rem;
+}
+
+.splash-panel a {
+    color: white;
+    text-decoration: underline;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    padding: 1rem 0;
+    gap: 0.5rem;
+    font-size: 4.2rem;
+    font-family: 'Norse Bold', sans-serif;
+}
+
+.logo img {
+    max-height: 100px;
+    margin-right: 0.5rem;
 }
 
 /* Form section */
@@ -166,10 +206,10 @@ fieldset.form-input .form-group {
 
 /* Media queries */
 @media (max-width: 1300px) {
-  section.signup-form {
-    width: 100%;
-    max-width: 95%;
-  }
+    section.signup-form {
+        width: 100%;
+        max-width: 95%;
+    }
 }
 
 @media (max-width: 780px) {
@@ -179,6 +219,10 @@ fieldset.form-input .form-group {
 
     .splash-panel {
         padding-top: 0;
+        background-attachment: fixed;
+        background-position: right;
+        background-repeat: no-repeat;
+        flex: 0.6;
     }
 
     section.signup-form {
