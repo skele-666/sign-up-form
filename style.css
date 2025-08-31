@@ -1,14 +1,6 @@
 /* CSS reset */
 @import 'node_modules/modern-normalize/modern-normalize.css';
 
-/* Custom font for logo */
-@font-face {
-    font-family: 'Norse Bold';
-    src: url('./assets/fonts/Norse-Bold.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-}
-
 :root {
     line-height: 1.5;
 }
@@ -72,6 +64,14 @@ h6 {
 img {
     display: block;
     max-inline-size: 100%;
+}
+
+/* Custom font for logo */
+@font-face {
+    font-family: 'Norse Bold';
+    src: url('./assets/fonts/Norse-Bold.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 /* Layout */
@@ -172,6 +172,10 @@ section.signup-form h1 {
     font-size: 2.5rem;
 }
 
+section.signup-form p {
+    margin-top: 1rem;
+}
+
 fieldset.form-input {
     display: flex;
     border: none;
@@ -183,6 +187,25 @@ fieldset.form-input {
 fieldset.form-input input {
     width: 100%;
     margin-bottom: 1rem;
+}
+
+/* Focus styles for password fields */
+fieldset.form-input input:focus {
+    outline: none;
+    border: 2px solid #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+fieldset.form-input input[type="password"]:invalid {
+    border: 2px solid red;
+}
+
+fieldset.form-input input[type="password"]:focus:invalid {
+    box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.15);
+}
+
+fieldset.form-input input[type="password"]:focus:valid {
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
 }
 
 fieldset.form-input .form-group {
@@ -222,16 +245,21 @@ fieldset.form-input .form-group {
         background-attachment: fixed;
         background-position: right;
         background-repeat: no-repeat;
-        flex: 0.6;
+        flex: none;
+        width: 100%;
+        min-height: 180px;
+    }
+
+    #main-content {
+        padding: 2rem 1rem;
+        flex: none;
+        width: 100%;
+        height: auto;
     }
 
     section.signup-form {
         width: 80%;
         max-width: 600px;
-    }
-
-    #main-content {
-        padding: 2rem 1rem;
     }
 
     .form-input {
