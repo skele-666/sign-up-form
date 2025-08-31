@@ -1,8 +1,27 @@
-/* CSS reset */
 @import 'node_modules/modern-normalize/modern-normalize.css';
 
 :root {
     line-height: 1.5;
+
+    /* Color variables */
+    --color-grid: #E1E1E1;
+    --background-main: #F3F3F3;
+    --background-form: rgba(255, 255, 255, 0.6);
+    --background-logo: rgba(0, 0, 0, 0.5);
+    --text-main: #000;
+    --text-inverse: #fff;
+    --text-required: #ff0000;
+    --border-form: #000;
+    --border-input: #ccc;
+    --border-input-focus: #2563eb;
+    --border-input-invalid: #ff0000;
+    --button-bg: #3663c4;
+    --button-bg-hover: #223a8b;
+    --button-bg-active: #0D355A;
+    --button-border: #0D355A;
+    --button-shadow-focus: rgba(37, 99, 235, 0.15);
+    --input-shadow-focus: rgba(37, 99, 235, 0.15);
+    --input-shadow-invalid: rgba(255, 0, 0, 0.15);
 }
 
 * {
@@ -83,6 +102,7 @@ body {
     font-weight: 400;
     font-style: normal;
     font-size: 1.2rem;
+    color: var(--text-main);
 }
 
 /* Splash panel */
@@ -98,7 +118,7 @@ body {
     justify-content: space-between;
     text-align: center;
     padding-top: 10rem;
-    color: white;
+    color: var(--text-inverse);
     font-size: 1rem;
 }
 
@@ -107,7 +127,7 @@ body {
 }
 
 .splash-panel a {
-    color: white;
+    color: var(--text-inverse);
     text-decoration: underline;
 }
 
@@ -115,7 +135,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--background-logo);
     width: 100%;
     padding: 1rem 0;
     gap: 0.5rem;
@@ -138,12 +158,9 @@ body {
     justify-content: center;
     width: 100%;
     height: 100%;
-    /* Grid pattern by https://uiverse.io/profile/kennyotsu-monochromia */
-    --color: #E1E1E1;
-    --background-color: #F3F3F3;
-    background-color: var(--background-color);
-    background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent),
-        linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent);
+    background-color: var(--background-main);
+    background-image: linear-gradient(0deg, transparent 24%, var(--color-grid) 25%, var(--color-grid) 26%, transparent 27%, transparent 74%, var(--color-grid) 75%, var(--color-grid) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%, var(--color-grid) 25%, var(--color-grid) 26%, transparent 27%, transparent 74%, var(--color-grid) 75%, var(--color-grid) 76%, transparent 77%, transparent);
     background-size: 55px 55px;
 }
 
@@ -157,13 +174,13 @@ body {
 }
 
 section.signup-form {
-    border: 2px solid black;
+    border: 2px solid var(--border-form);
     padding: 1.3rem 3.5rem 2.5rem 3.5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 90%;
     margin-top: 1.5rem;
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: var(--background-form);
     width: 60%;
 }
 
@@ -176,43 +193,60 @@ section.signup-form p {
     margin-top: 1rem;
 }
 
+section.signup-form button {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--button-border);
+    background-color: var(--button-bg);
+    color: var(--text-inverse);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+section.signup-form button:hover {
+    background-color: var(--button-bg-hover);
+    transition: background-color 0.3s;
+}
+
+section.signup-form button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--button-shadow-focus);
+}
+
+section.signup-form button:active {
+    background-color: var(--button-bg-active);
+    transition: background-color 0.1s;
+}
+
 fieldset.form-input {
     display: flex;
     border: none;
     margin-top: 2rem;
-    gap: 1rem;
+    gap: 1.5rem;
     align-items: stretch;
+    flex-direction: column;
+    width: 100%;
+}
+
+fieldset.form-input .form-row {
+    display: flex;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+fieldset.form-input .form-row>* {
+    flex: 1;
 }
 
 fieldset.form-input input {
     width: 100%;
     margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 2px solid var(--border-input);
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-/* Focus styles for password fields */
-fieldset.form-input input:focus {
-    outline: none;
-    border: 2px solid #2563eb;
-    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
-}
-
-fieldset.form-input input[type="password"]:invalid {
-    border: 2px solid red;
-}
-
-fieldset.form-input input[type="password"]:focus:invalid {
-    box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.15);
-}
-
-fieldset.form-input input[type="password"]:focus:valid {
-    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
-}
-
-fieldset.form-input .form-group {
-    flex: 1;
-}
-
-.form-input label {
+fieldset.form-input label {
     display: block;
     margin-bottom: 0.5rem;
 }
@@ -224,7 +258,26 @@ fieldset.form-input .form-group {
 }
 
 .required {
-    color: red;
+    color: var(--text-required);
+}
+
+/* Focus styles for password fields */
+fieldset.form-input input:focus {
+    outline: none;
+    border: 2px solid var(--border-input-focus);
+    box-shadow: 0 0 0 2px var(--input-shadow-focus);
+}
+
+fieldset.form-input input[type="password"]:invalid {
+    border: 2px solid var(--border-input-invalid);
+}
+
+fieldset.form-input input[type="password"]:focus:invalid {
+    box-shadow: 0 0 0 2px var(--input-shadow-invalid);
+}
+
+fieldset.form-input input[type="password"]:focus:valid {
+    box-shadow: 0 0 0 2px var(--input-shadow-focus);
 }
 
 /* Media queries */
@@ -262,10 +315,7 @@ fieldset.form-input .form-group {
         max-width: 600px;
     }
 
-    .form-input {
+    fieldset.form-input .form-row {
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
     }
 }
